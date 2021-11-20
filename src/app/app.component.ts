@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sample';
+  user = localStorage.getItem('currentUser');
+  logout() {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
+  }
 }

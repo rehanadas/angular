@@ -1,0 +1,11 @@
+.main_outer{
+    height: 100vh;
+    background-color: #e9ecef;
+}
+.outer_container{
+    margin: 2%;
+    background-color: #e9ecef;
+}
+.height_40{
+    height: 40px;
+}

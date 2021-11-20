@@ -1,0 +1,43 @@
+<h2>Register</h2>
+<form [formGroup]="regForm" (ngSubmit)="checkEmailExist()">
+    <small class="text-danger" *ngIf="visibleIndex">Error in Registration!</small>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" required class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && regForm.controls['email'].invalid }" />
+        <div class="text-danger" *ngIf="submitted && regForm.controls['email'].invalid">
+            <small>Please type a valid email. eg test@gmail.com </small>
+        </div>
+        <div class="text-danger" *ngIf="submitted && isExistEmail">
+            <small>This emailid already exists. </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" required class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && regForm.controls['username'].invalid }" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" required class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && regForm.controls['password'].invalid }"/>
+    </div>
+    <div class="form-group">
+        <label for="cnfpassword">Confirm Password</label>
+        <input type="password" formControlName="cnfpassword" required class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && regForm.controls['cnfpassword'].invalid }"
+            (change)="changeStatus()" />
+    </div>
+    <div class="text-danger" *ngIf="submitted && passMissMatch">
+        <small>Password and Confirm Password must be same.</small>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" formControlName="phone" required class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && regForm.controls['phone'].invalid }" />
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary">Register</button>
+    </div>
+</form>
